@@ -44,7 +44,7 @@ int main(){
 	cout<<"give the  elements(push) and their positions."<<endl;
 	for(int i=0;i<size;i++){
 	cin>>value>>pos;
-//push and display 
+    //push 
 	count=s1.push(value,size,arr,pos);
 	}
 	
