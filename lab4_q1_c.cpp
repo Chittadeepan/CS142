@@ -10,11 +10,12 @@ class stackarr{
 		return NULL ;
 		}
 		//pushing elements
-		else{arr[top]=value;
-		top++;
+		else{
+		arr[pos]=value;
+		pos++;
 		
 		
-		return top;
+		return pos;
 		}	
 	}
 	//decrease size of arr to be printed 
@@ -30,7 +31,7 @@ class stackarr{
 	}
 	//CountItems 
 	void size(int count){
-	//	
+	
 		cout<<"the no. of elements="<<count<<endl;
 	}
 };
@@ -40,15 +41,12 @@ int main(){
 	cout<<"give the size of the stack"<<endl;
 	cin>>size;
 	s1.isempty(top);
-	cout<<"give the  elements of stack."<<endl;
+	cout<<"give the  elements(push) and their positions."<<endl;
 	for(int i=0;i<size;i++){
-	 cin>>arr[i];
-	}
-
-	cout<<"give the new element(push) and its position"<<endl;
 	cin>>value>>pos;
 //push and display 
 	count=s1.push(value,size,arr,pos);
+	}
 	
 	cout<<"Displaying the elements:"<<endl;
 	for(int j=0;j<count;j++){

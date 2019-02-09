@@ -7,15 +7,15 @@ class queuearr{
 	//enqueing elements greater than size of arr
 	if(pos>top){
 		cout<<"queue doesn't contain that many elements\n";
-		return NULL ;
-		}
+		return NULL;
+	    }
 	//enqueing elements
 	else{
 	//enqueing last element 
-		arr[top]=value;
-		top++;
+		arr[pos]=value;
+		pos++;
 		
-		return top;
+		return pos;
 		}
 	}
 	
@@ -45,17 +45,15 @@ int main(){
 	cout<<"give the size of the queue."<<endl;
 	cin>>size;
 	q1.isempty(top);
-	cout<<"give the  elements of queue."<<endl;
-	 
-	for(int i=0;i<size;i++){
-	 cin>>arr[i];
-	}
      //enqueing elements
-	cout<<"give the new element(enqueue) and its position"<<endl;
+    
+	cout<<"Give the  elements(enqueue) and their positions."<<endl;
+	 for(int i=0;i<size;i++){
 	cin>>value>>pos;
 	
 
 	count=q1.enqueue(value,size,arr,pos);
+	}
 	cout<<"Displaying the elements:"<<endl;
 	for(int j=0;j<count;j++){
 		
@@ -66,7 +64,7 @@ int main(){
 	//storing index after dequeued element in a
 	a=q1.dequeue(i);
 	//display 
-	cout<<"Displaying the elements after pop:"<<endl;
+	cout<<"Displaying the elements after dequeue:"<<endl;
 	for(int j=a;j<count;j++){
 		
 		cout<<arr[j]<<"->";
