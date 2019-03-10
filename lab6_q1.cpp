@@ -21,7 +21,7 @@ public:
           root=NULL;
         }
       void insert(int value){
-           insertHelper(root,value);
+             insertHelper(root,value);
         }
       void insertHelper(node*current,int value){
            
@@ -55,20 +55,20 @@ public:
                  }
          }    
       void display(){
-            display2(root);
+             display2(root);
          }
       void display2(node*current){
             //base condition
-            if(current==NULL){
+             if(current==NULL){
               
-              return ;
+               return ;
             }
             //move to left child
-            display2(current->left);
+             display2(current->left);
             //display 
-            cout<<current->data<<"->";
+             cout<<current->data<<"->";
             //move to right child 
-            display2(current->right);
+             display2(current->right);
           }
        node*search(int value){
               return search2(root,value);
@@ -89,9 +89,9 @@ public:
             
           
           
-          void delet(){};
+        void delet(){};
           
-          void height(){};      
+        void height(){};      
 };
 
 int main(){
