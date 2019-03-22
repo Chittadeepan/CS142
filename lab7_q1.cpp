@@ -49,18 +49,18 @@ public:
              
              else{
              //if value>current->data
-             //if right is NULL ,inset there
-                  if(current->right==NULL){
+             //if right is NULL ,insert there
+                if(current->right==NULL){
                       current->right=new node(value);
                     }
              // else move right and call insertH
-                  else{
-                       insertHelper(current->right,value);
+                else{
+                      insertHelper(current->right,value);
                     }
                  }
           }    
       void display(){
-          cout<<"Displying the numbers :\n";
+            cout<<"Displying the numbers :\n";
           
 	    cout<<"PRE ORDER TRAVERSAL : "<<endl;
             displayPreorder(root);
@@ -268,8 +268,8 @@ int main(){
       b1.insert(2);
       b1.insert(4);
       b1.insert(9);
-	b1.insert(1);
-	b1.insert(6);
+      b1.insert(1);
+      b1.insert(6);
       b1.display();
       
       
