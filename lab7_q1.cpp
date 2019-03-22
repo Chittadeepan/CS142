@@ -174,47 +174,35 @@ public:
           
         //replace child node with parent node
       void replace_at_parent(node*current, node*temp){
-           // if(current->parent->left==current){
-              if(current->left!= NULL){
+          
+             if(current->parent->left==current){
                current->parent->left=temp;
-                             }
-              else{
+             }
+             else if(current->parent->right==current){
                current->parent->right=temp;
                  
-               delete current ;
-              }
-            // else if((current->parent->right)==current){
-            // if(current->left!= NULL){
-             // (current->parent->right)=current->left;
-              
-            //}
-            // else{
-             // (current->parent->right)=current->right;
-           // }
+               
+             }
+
             
-          }
+           }
 //swapping data
        void value_replace(node*first, node*current){
-                node*temp;
-                temp->data=first->data;
-                first->data=current->data ;
-                current->data=temp->data ;
-          }
+              node*temp;
+              temp->data=first->data;
+              first->data=current->data ;
+              current->data=temp->data ;
+           }
           //delete node
        void deletenode(int value){
-           if(search(value)==NULL){
+              if(search(value)==NULL){
                 
                 cout<<"The number "<<value<<" is not present in the tree."<<endl;
                 }
-           else{
+              else{
                 node*current=search(value);
-                
-                
-                node*temp;
-                
-             
-                      // replace_at_parent(current, current->right);
-              //  }
+                node*temp;            
+                 //middle node has left child     
                 if(current->left!=NULL){
                   
                       temp=find_max(current);
@@ -222,81 +210,51 @@ public:
                       value_replace(current,temp);
                       if(current->left->right!= NULL){
  				     temp->parent->right=temp->left;
-                     }
-                     else{
+                      }
+                      else{
                        
-                         temp->parent->left=temp->left;
+                              temp->parent->left=temp->left;
                       }
  			
- 				     delete temp ;
-                       }
-			else if(current->right!=NULL){
-			       temp=find_min2(current->right);
+ 		         delete temp ;
+                 }
+                   //middle node has right child
+		   else if(current->right!=NULL){
+			    temp=find_min2(current->right);
 			       
- 				  value_replace(current,temp);
- 				  if(current->right->left!= NULL){
+ 		         value_replace(current,temp);
+ 			   if(current->right->left!= NULL){
  				     temp->parent->left=temp->right;
- 				     }
- 				     else{
- 				      temp->parent->right=temp->right; 
-                       }
- 				     delete temp ;
-                       }
+ 			   }
+ 			   else{
+ 				     temp->parent->right=temp->right; 
+                      }
+ 		        delete temp ;
+                 }
 				
-		       
+		       //only root in the tree
 		  
-                         if((current==root)&&(current->left==NULL)&&(current->right==NULL)){
+                            if((current==root)&&(current->left==NULL)&&(current->right==NULL)){
                        
                        
-                       root=NULL ;
+                      root=NULL ;
                  
-                       //if(root->left!=NULL && root->right!= NULL)//{
-                                //temp=find_min2(current->right);   
-                             //   value_replace(current, temp);
-                               // delete temp;
-                      // }
-                      // else{
-        
-                                //temp=find_min2(current->left);
-                            //    replace_at_parent(current,temp);
-                      // }
-               // }
-           }
-                  else {
-                    if(current->parent->left==current){
-                      current->parent->left=current->left;
-                    }
-                   else if(current->parent->right==current){
-                      current->parent->right=current->right ;
-                    }
-                  }
+                      
+                 }
+                 //delete leaf node
+                else {
+                      if(current->parent->left==current){
+                        
+                         replace_at_parent(current, current->left);
+                      }
+                      else if(current->parent->right==current){
+                         replace_at_parent(current,current->right);
+                      }
+                 }
+             }
+         
          }
-      }   
-   void FancyInsert(node*root,int space){
-       
-       //base case
-               if(root==NULL){
-                   return ;
-               }
-      
-      //increase distance between levels
-               space=space+10;
-      //process right child first 
-               FancyInsert(root->right,space);
-      //print current node after space
-      
-     	    for(int i=10;i<space;i++){
-      	       cout<<" ";
-               }
-               cout<<root->data<<endl;
-        //process left child
-               FancyInsert(root->left,space);
-      
-          }
-      void FancyInsertHelper(){
-        //base case with space 0
-               FancyInsert(root,0);
-          }     
+
 };
 
 int main(){
@@ -315,20 +273,15 @@ int main(){
       b1.display();
       
       
-      cout<<"\nGive the number to be searched.\n";
-      cin>>b;
-      a=b1.search(b);
-      cout<<"The position(an address of a pointer) of number "<<b<<" : "<<endl ;      
-      cout<<a<<endl;
-      cout<<"Fancy Insert :\n ";
-      b1.FancyInsertHelper();
+      
+     // cout<<"Fancy Insert :\n ";
+     // b1.FancyInsertHelper();
       cout<<"Finding the address  of minimum :"<<endl ;
       c=b1.find_min();
       cout<<c<<endl;
-    // a=b1.search(8);
-     //cout<<a;
     
-     b1.deletenode(10);
+    
+      b1.deletenode(8);
       b1.display();
       
       return 0;
